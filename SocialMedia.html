@@ -1,13 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media App</title>
-</head>
-<body>
-    <div>
-        <h1>Welcome to My Social Media App</h1>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Social Media App</title>
+        <!--CDN for ICONS-->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+        <link rel="stylesheet" href="SocialMedia.css" />
+
+    </head>
+    <body>
+        <!--Navbar Section-->
+        <nav>
+            <div class="Nav-container">
+                <h2 class="logo">
+                    Social Media
+                </h2>
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search"
+                        placeholder="Search for anything , which you want to know">
+                </div>
+                <div class="create">
+                    <label class="btn btn-primary"
+                        for="create-post">Create</label>
+                    <div class="profile-photo">
+                        <img src="./img/Dp.jpg" alt>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!--Main Section-->
+        <main>
+            <div class="container">
+                <!--Left Section-->
+                <div class="left">
+
+                    <!----------------- SIDEBAR -------------------->
+                    <div class="sidebar-top">
+                        <a class="profile">
+                            <div class="handle">
+                                <h3>YOUR GROUPS</h3>
+                            </div>
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/figma.png">
+                            </div>
+                            <div class="handle">
+                                <h4>Figma Community</h4>
+                            </div>
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/sketch.png">
+                            </div>
+                            <div class="handle">
+                                <h4>Sketch Community</h4>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <div class="sidebar">
+                        <a class="profile">
+
+                            <div class="handle">
+                                <h3>Friends</h3>
+                            </div>
+
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/Dp.jpg">
+                            </div>
+                            <div class="handle">
+                                <h4>Hassaan Gul</h4>
+                            </div>
+                            <i class="fa-solid fa-circle"
+                                style="color: #01F4F7"></i>
+                        </a>
+
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/Dp-1.jpg">
+                            </div>
+                            <div class="handle">
+                                <h4>Salman</h4>
+                            </div>
+                            <p class="text-muted">
+                                Active 11 min ago
+                            </p>
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/Dp-2.jpg">
+                            </div>
+                            <div class="handle">
+                                <h4>Babar Azam</h4>
+                            </div>
+                            <i class="fa-solid fa-circle"
+                                style="color: #01F4F7"></i>
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/Dp-3.jpg">
+                            </div>
+                            <div class="handle">
+                                <h4>Ahmad </h4>
+                            </div>
+                            <p class="text-muted">
+                                Active 3 hours ago
+                            </p>
+                        </a>
+                        <a class="profile">
+                            <div class="profile-photo">
+                                <img src="./img/Dp-4.jpg">
+                            </div>
+                            <div class="handle">
+                                <h4>Mister Amir</h4>
+                            </div>
+                            <i class="fa-solid fa-circle"
+                                style="color: #01F4F7"></i>
+                        </a>
+                    </div>
+                    <!----------------- END OF SIDEBAR -------------------->
+                    <label class="btn btn-primary" for="create-post">Create
+                        Post</label>
+                </div>
+
+                <!--Middle Section-->
+                <div class="middle">
+                     <div class="stories">
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./img/Dp.jpg">
+                        </div>
+                        <p class="name">Your Story</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./img/Dp-1.jpg">
+                        </div>
+                        <p class="name">Lila James</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./img/dp-2.jpg">
+                        </div>
+                        <p class="name">Winnie Haley</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./img/dp-3.jpg">
+                        </div>
+                        <p class="name">Daniel Bale</p>
+                    </div>
+                    <div class="story">
+                        <div class="profile-photo">
+                            <img src="./img/dp-4.jpg">
+                        </div>
+                        <p class="name">Jane Doe</p>
+                    </div>
+                   
+                </div>
+
+                <!--Getting data from API-->
+                    <div id="imageDiv"></div>
+                    <div id="titleDiv"></div>
+                    <div id="descriptionDiv"></div>
+
+                </div>
+
+                <!--Right Section-->
+                <div class="right">
+
+                </div>
+
+            </div>
+        </main>
+    </body>
+    <script>
+    // Fetch product data from the dummy API
+fetch('https://dummyjson.com/products/1')
+    .then(response => response.json())
+    .then(product => {
+        // Access the product data and display it
+        const imageDiv = document.getElementById('imageDiv');
+        const image = document.createElement('img');
+        image.src = product.images[0]; 
+        imageDiv.appendChild(image);
+
+       
+
+        const titleDiv = document.getElementById('titleDiv');
+        const title = document.createElement('h3');
+        title.textContent = product.title;
+        titleDiv.appendChild(title);
+
+        const descriptionDiv = document.getElementById('descriptionDiv');
+        const description = document.createElement('p');
+        description.textContent = product.description; // Assuming 'description' is the property containing the product description
+        descriptionDiv.appendChild(description);
+    })
+    .catch(error => console.error('Error fetching product data:', error));
+
+  </script>
 </html>
