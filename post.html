@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Post</title>
+  <link rel="stylesheet" href="post.css">
+</head>
+<body>
+
+<button id="addPostBtn">Add Post</button>
+
+<div id="postFormContainer" class="hidden">
+  <form id="postForm">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="userId">User ID:</label><br>
+    <input type="number" id="userId" name="userId"><br><br>
+    <label for="des">Description:</label><br>
+    <input type="text" id="des" name="des"><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  
+</div>
+
+
+
+<div id="postContainer" class="post-container"></div>
+
+<script src="post.js"></script>
+</body>
+</html>

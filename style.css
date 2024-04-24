@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 
 * {
   margin: 0;
@@ -8,12 +9,13 @@
 
 body,
 input {
-  font-family: "Poppins", sans-serif;
+  
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
   position: relative;
-  width: 100%;
+  max-width: 100%;
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
@@ -107,7 +109,7 @@ form.login-form {
 
 .btn {
   width: 150px;
-  background-color: #ed847a;;
+  background-color: #022e96;
   border: none;
   outline: none;
   height: 49px;
@@ -121,7 +123,7 @@ form.login-form {
 }
 
 .btn:hover {
-  background-color: #ed847a;
+  background-color: #022e96;
 }
 .panels-container {
   position: absolute;
@@ -130,7 +132,7 @@ form.login-form {
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 50% 50%;
 }
 
 .container:before {
@@ -140,10 +142,10 @@ form.login-form {
   width: 2000px;
   top: -10%;
   right: 48%;
-  transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #ed847a 0%, #fbd3c4 100%);
+  transform: translateY(-20%);
+  background-image: linear-gradient(-45deg, #01F4F7 0%, #022e96b6 80%);
   transition: 1.8s ease-in-out;
-  border-radius: 50%;
+  /* border-radius: 30%; */
   z-index: 6;
 }
 

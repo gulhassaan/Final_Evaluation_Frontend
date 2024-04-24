@@ -10,26 +10,86 @@
 
         <link rel="stylesheet" href="SocialMedia.css" />
 
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+            crossorigin="anonymous"></script>
+
+        <script src="./api.js"></script>
+        <script src="./user.js"></script>
+        <script src="./comments.js"></script>
+        <script src="auth.js"></script>
+
     </head>
     <body>
         <!--Navbar Section-->
         <nav>
             <div class="Nav-container">
-                <h2 class="logo">
+                <h2 class="logo" style="font-size: 22px;">
                     Social Media
                 </h2>
                 <div class="search-bar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="bi bi-search"></i>
                     <input type="search"
                         placeholder="Search for anything , which you want to know">
                 </div>
                 <div class="create">
-                    <label class="btn btn-primary"
-                        for="create-post">Create</label>
-                    <div class="profile-photo">
-                        <img src="./img/Dp.jpg" alt>
+                    <!--Show Loggedin user-->
+                    <label id="usernameLabel" style="color: #022F96; font-weight: bolder;"></label>
+
+                        <div class="profile-photo" style="cursor: pointer; filter: drop-shadow(5px 5px 20px #022F96);" id="profile-photo" onclick="showmodal()">
+                            <img  id="profileImage" src alt="Profile Photo">
+                        </div>
+                        
+                </div>
+                <div class="logout-card" id="logout-card">
+                    <div class="card" style="width: 20rem">
+                        <div class="profile-info" style="display: flex; flex-direction: column; align-items: center; margin: 10px; border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.468); background-color: #ADE3FB; border: 1px solid #d2dbdf; padding: 15px;">
+                            <img id="logout-profile-image" style="width: 30%; border-radius: 50%; object-fit: cover;" src alt="Profile Photo">
+                            <p id="logout-username" style="font-size: 20px; font-weight: bolder;"></p>
+                            <p id="logout-birthDate" style="font-size: 16px; margin-top: 2px;"></p>
+                            <p id="logout-domain" style="font-size: 16px; color: #022F96; text-decoration: none; cursor: pointer; transition: color 0.3s ease;"></p>
+                            
+                            
+                        </div>
+
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-user"></i>
+                                <p>Profile</p>
+                            </li>
+                            <li>
+                                <i class="fa-regular fa-bookmark"></i>
+                                <p>Saved</p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-info"></i>
+                                <p>Info</p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-gear"></i>
+                                <p>Setting</p>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-half-stroke"></i>
+                                <p>Theme</p>
+                            </li>
+                            <div id="logout"
+                                style="display: flex; gap: 20px; color: red; padding: 20px 0px; cursor: pointer;">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <p>Logout</p>
+                            </div>
+
+                        </ul>
                     </div>
                 </div>
+
             </div>
         </nav>
 
@@ -39,7 +99,7 @@
                 <!--Left Section-->
                 <div class="left">
 
-                    <!----------------- SIDEBAR -------------------->
+                    <!--Sidebar-->
                     <div class="sidebar-top">
                         <a class="profile">
                             <div class="handle">
@@ -66,19 +126,22 @@
                     </div>
 
                     <div class="sidebar">
+                        <h3
+                            style="margin-left: 1.2rem; font-size: 0.8rem;">Friends</h3>
+                        <div id="user-list"></div>
                         <a class="profile">
 
-                            <div class="handle">
+                            <!-- <div class="handle">
                                 <h3>Friends</h3>
-                            </div>
+                            </div> -->
 
                         </a>
-                        <a class="profile">
+                        <!-- <a class="profile">
                             <div class="profile-photo">
                                 <img src="./img/Dp.jpg">
                             </div>
                             <div class="handle">
-                                <h4>Hassaan Gul</h4>
+                                <h2>Hassaan Gul</h2>
                             </div>
                             <i class="fa-solid fa-circle"
                                 style="color: #01F4F7"></i>
@@ -89,18 +152,18 @@
                                 <img src="./img/Dp-1.jpg">
                             </div>
                             <div class="handle">
-                                <h4>Salman</h4>
+                                <h2>Salman</h2>
                             </div>
-                            <p class="text-muted">
+                            <h6 class="text-muted">
                                 Active 11 min ago
-                            </p>
+                            </h6>
                         </a>
                         <a class="profile">
                             <div class="profile-photo">
                                 <img src="./img/Dp-2.jpg">
                             </div>
                             <div class="handle">
-                                <h4>Babar Azam</h4>
+                                <h2>Babar Azam</h2>
                             </div>
                             <i class="fa-solid fa-circle"
                                 style="color: #01F4F7"></i>
@@ -110,103 +173,317 @@
                                 <img src="./img/Dp-3.jpg">
                             </div>
                             <div class="handle">
-                                <h4>Ahmad </h4>
+                                <h2>Ahmad </h2>
                             </div>
-                            <p class="text-muted">
+                            <h6 class="text-muted">
                                 Active 3 hours ago
-                            </p>
+                            </h6>
                         </a>
                         <a class="profile">
                             <div class="profile-photo">
                                 <img src="./img/Dp-4.jpg">
                             </div>
                             <div class="handle">
-                                <h4>Mister Amir</h4>
+                                <h2>Mister Amir</h2>
                             </div>
                             <i class="fa-solid fa-circle"
                                 style="color: #01F4F7"></i>
-                        </a>
+                        </a> -->
                     </div>
-                    <!----------------- END OF SIDEBAR -------------------->
+                    <!--Sidebar End-->
                     <label class="btn btn-primary" for="create-post">Create
                         Post</label>
                 </div>
 
                 <!--Middle Section-->
                 <div class="middle">
-                     <div class="stories">
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./img/Dp.jpg">
+                    <div class="stories">
+                        <div class="carousel-controls">
+                            <button id="prevBtn">&lt;</button>
+                            <button id="nextBtn">&gt;</button>
                         </div>
-                        <p class="name">Your Story</p>
-                    </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./img/Dp-1.jpg">
-                        </div>
-                        <p class="name">Lila James</p>
-                    </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./img/dp-2.jpg">
-                        </div>
-                        <p class="name">Winnie Haley</p>
-                    </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./img/dp-3.jpg">
-                        </div>
-                        <p class="name">Daniel Bale</p>
-                    </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./img/dp-4.jpg">
-                        </div>
-                        <p class="name">Jane Doe</p>
-                    </div>
-                   
-                </div>
 
-                <!--Getting data from API-->
-                    <div id="imageDiv"></div>
-                    <div id="titleDiv"></div>
-                    <div id="descriptionDiv"></div>
+                        <ul class="carousel">
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/Dp.jpg"></a>
+                                    <button>+</button>
+                                </div>
+                                <span>Hassaan1</span>
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-1.jpg"></a>
+                                </div>
+                                <span>Hassaan2</span>
+
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-2.jpg"></a>
+                                </div>
+                                <span>Hassaan3</span>
+
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-3.jpg"></a>
+                                </div>
+                                <span>Hassaan4</span>
+
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-4.jpg"></a>
+                                </div>
+                                <span>Hassaan5</span>
+
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/Dp.jpg"></a>
+                                </div>
+                                <span>Hassaan6</span>
+
+                            </li>
+
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-1.jpg"></a>
+                                </div>
+                                <span>Hassaan7</span>
+
+                            </li>
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-1.jpg"></a>
+                                </div>
+                                <span>Hassaan8</span>
+
+                            </li>
+                            <li>
+                                <div class="outer-layer">
+                                    <a href><img src="./img/dp-1.jpg"></a>
+                                </div>
+                                <span>Hassaan9</span>
+
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!--Bootstrap Card-->
+                    <!--customize bootstrap card-->
+                    <!--Getting data from API-->
+                    <div style="margin-top: 3rem;">
+                        <!--Card Div-->
+
+                        <div id="post-list"></div>
+                        <!--Card Div End-->
+                    </div>
+                    <!--post -->
+
+                    <!--post end-->
 
                 </div>
 
                 <!--Right Section-->
-                <div class="right">
+                <div class="right"
+                    style="background-color: white; height: fit-content;">
+                    <div id="video-container"
+                        style="border-radius: 20px; margin-top: 0;">
+                        <video width="100%"
+                            style="border-radius: 20px 20px 0px 0px; " autoplay
+                            loop controls>
+                            <source src="./img/option1.mp4" type="video/mp4">
+                        </video>
+
+                    </div>
+                    <div
+                        style="position: relative; display: flex; justify-content: center;">
+                        <div
+                            style="background-color: #022f96; position: absolute;z-index: 5; top: -25px; color: rgba(255, 255, 255, 0.802); border-radius: 5px; width: 80%; padding: 0 10px;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center;">
+                                <div
+                                    style="display: flex; flex-direction: column; padding: 2px 0px;">
+                                    <divstyle="font-size: 12px;"><p>live
+                                            chat</p></divstyle=>
+                                    <div style="font-size: 12px;"><p><i
+                                                class="fa-regular fa-user"></i>&nbsp;&nbsp;15K
+                                            people</p></div>
+                                </div>
+                                <div class="chat-icons"
+                                    style="font-size: 12px;"><i
+                                        class="fa-solid fa-sliders"
+                                        style="margin-right: 10px;"></i><i
+                                        class="fa-solid fa-xmark"></i></div>
+                            </div>
+                        </div></div>
+
+                    <div class="All-comment-box"
+                        style="background-color:white; margin-top: -10px; height: 60vh; overflow-y: scroll;">
+                        <div
+                            style="display: flex; padding: 5px 10px; gap: 20px; border-radius: 15px; background-color: #F0EFEF; margin: 30px auto; width: 90%; align-items: center;">
+                            <div style="flex: 0 0 auto;">
+                                <i style="color: rgba(255, 217, 0, 0.892);"
+                                    class="fa-solid fa-gem"></i>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <div
+                                    style="font-size: 15px; font-weight: bolder;">Hassaan</div>
+                                <div
+                                    style="font-size: 11px; font-weight: 200;">How
+                                    to make professional website</div>
+                            </div>
+                        </div>
+
+                        <div id="comments-container" class="comments-container">
+                        </div>
+                        <div class="comment-box">
+                            <input id="comment-text" type="text"
+                                class="comment-input"
+                                placeholder="😊 Add comment...">
+                            <i id="send-comment"
+                                class="fas fa-paper-plane send-icon"></i>
+                        </div>
+
+                    </div>
 
                 </div>
+            </main>
+        </body>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carousel = document.querySelector('.carousel');
+            const carouselItems = document.querySelectorAll('.carousel li');
+            const totalItems = carouselItems.length;
+            const itemsPerPage = 7;
+            let currentIndex = 0;
+            
+            function showItems(startIndex) {
+                const endIndex = startIndex + itemsPerPage - 1;
+                for (let i = 0; i < totalItems; i++) {
+                    if (i >= startIndex && i <= endIndex) {
+                        carouselItems[i].style.display = 'block';
+                    } else {
+                        carouselItems[i].style.display = 'none';
+                    }
+                }
+            }
+    
+            function nextItems() {
+                const nextIndex = currentIndex + 1;
+                if (nextIndex + itemsPerPage - 1 < totalItems) {
+                    currentIndex = nextIndex;
+                    showItems(currentIndex);
+                    updateButtons();
+                }
+            }
+    
+            function prevItems() {
+                const prevIndex = currentIndex - 1;
+                if (prevIndex >= 0) {
+                    currentIndex = prevIndex;
+                    showItems(currentIndex);
+                    updateButtons();
+                }
+            }
+    
+            // Show the first set of items initially
+            showItems(currentIndex);
+            
+            // Update the visibility and position of prev/next buttons based on currentIndex
+            function updateButtons() {
+                document.getElementById('prevBtn').style.display = currentIndex === 0 ? 'none' : 'block';
+                document.getElementById('prevBtn').style.left = currentIndex === 0 ? '0' : '';
+                const nextButtonIndex = currentIndex + itemsPerPage - 1;
+                document.getElementById('nextBtn').style.display = nextButtonIndex >= totalItems - 1 ? 'none' : 'block';
+                if (nextButtonIndex < totalItems - 1) {
+                    const nextButtonPosition = carouselItems[nextButtonIndex].offsetTop + carouselItems[nextButtonIndex].offsetHeight + 'px';
+                    document.getElementById('nextBtn').style.position = 'absolute';
+                    document.getElementById('nextBtn').style.top = '10';
+                    document.getElementById('nextBtn').style.left = '700px';
+                    
+                    
+                }
+            }
+            updateButtons();
+            
+            // Event listeners for prev/next buttons
+            document.getElementById('nextBtn').addEventListener('click', nextItems);
+            document.getElementById('prevBtn').addEventListener('click', prevItems);
+        });
+        </script>
 
-            </div>
-        </main>
-    </body>
-    <script>
-    // Fetch product data from the dummy API
-fetch('https://dummyjson.com/products/1')
-    .then(response => response.json())
-    .then(product => {
-        // Access the product data and display it
-        const imageDiv = document.getElementById('imageDiv');
-        const image = document.createElement('img');
-        image.src = product.images[0]; 
-        imageDiv.appendChild(image);
+<script>
+    window.onload = function() {
+        console.log(localStorage);
 
-       
+        // Retrieve user data from localStorage
+        const FirstName = localStorage.getItem("FirstName");
+        const userProfile = localStorage.getItem("UserProfile");
+        const birthDate = localStorage.getItem("BirthDate");
+        const domain = localStorage.getItem("Domain");
 
-        const titleDiv = document.getElementById('titleDiv');
-        const title = document.createElement('h3');
-        title.textContent = product.title;
-        titleDiv.appendChild(title);
+        console.log("FirstName:", FirstName);
+        console.log("UserProfile:", userProfile);
+        console.log("BirthDate:", birthDate);
+        console.log("Domain:", domain);
 
-        const descriptionDiv = document.getElementById('descriptionDiv');
-        const description = document.createElement('p');
-        description.textContent = product.description; // Assuming 'description' is the property containing the product description
-        descriptionDiv.appendChild(description);
-    })
-    .catch(error => console.error('Error fetching product data:', error));
+        // Update HTML elements with user data
+        document.getElementById('logout-username').innerText = FirstName;
+        document.getElementById('usernameLabel').innerText = FirstName;
+        document.getElementById('profileImage').src = userProfile; 
+        document.getElementById('logout-profile-image').src = userProfile;
+        document.getElementById('logout-birthDate').innerText = birthDate;
+        document.getElementById('logout-domain').innerText = domain;
 
-  </script>
-</html>
+        const token = localStorage.getItem('token');
+        console.log("Token : " , token)
+        if (!token) {
+            // Token is not present, redirect to index.html
+            window.location.href = "index.html";
+        } else {
+            // Make a request to get the current authenticated user
+            fetch('https://dummyjson.com/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // If the request fails, redirect to index.html
+                    window.location.href = "index.html";
+                } else {
+                    // If the request is successful, stay on socialmedia.html
+                    console.log('User is authenticated');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching current user:', error);
+                // If there's an error, redirect to index.html
+                window.location.href = "index.html";
+            });
+        }
+    };
+</script>
+
+        <script>
+            document.getElementById('logout').addEventListener('click', function() {
+    // Remove token or any other relevant data from localStorage
+    localStorage.removeItem('token');
+
+    // Redirect to index.html or any other desired page
+    window.location.href = 'index.html';
+});
+
+          </script>
+        
+    </html>
