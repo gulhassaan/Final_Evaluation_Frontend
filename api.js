@@ -187,3 +187,7 @@ fetch('https://dummyjson.com/users')
 
 
     
+
+
+    // Function to perform search
+// Function to perform search

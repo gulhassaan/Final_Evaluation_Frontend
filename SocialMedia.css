@@ -151,10 +151,11 @@ main .container {
 }
 
 /*Left Section*/
-main .container .left {
+main .container .left ,.right{
   height: max-content;
   position: sticky;
   top: 5.4rem;
+
 }
 
 main .container .left .profile {
@@ -332,7 +333,9 @@ h2{
   font-size: 15px;
 }
 
-
+.live{
+  display: none;
+}
 .comment-profile-pic {
   width: 50vw;
   border-radius: 50%;
@@ -485,9 +488,15 @@ display: none;
     font-size: 10px;
   } */
  .right{
-  background-color: red;
-  display: none;
+  transition: 1s ease-in-out;
+  position: absolute;
+  transform: translateX(150%);
+  top: 140px;
+  left: 85px;
+  /* width: 80%; */
  }
+
+
  .middle{
  margin-left: -10px;
  }
@@ -506,4 +515,7 @@ display: none;
  .stories::-webkit-scrollbar{
   display: none;
  }
+ .live{
+  display: block;
+}
 }
