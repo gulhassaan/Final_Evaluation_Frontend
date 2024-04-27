@@ -24,11 +24,11 @@
             crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <script src="./api.js"></script>
-        <script src="./user.js"></script>
-        <script src="./comments.js"></script>
-        <script src="auth.js"></script>
-        <script src="post.js"></script>
+        <script src="./Js/api.js"></script>
+        <script src="./Js/user.js"></script>
+        <script src="./Js/comments.js"></script>
+        <script src="./Js/auth.js"></script>
+        <!-- <script src="post.js"></script> -->
         <!-- <script src="search.js"></script> -->
 
     </head>
@@ -72,7 +72,7 @@
                         </div>
 
                         <ul>
-                            <li>
+                            <li onclick="Profile()">
                                 <i class="fa-solid fa-user"></i>
                                 <p>Profile</p>
                             </li>
@@ -204,11 +204,11 @@
                     </div>
 
                     <!--Sidebar End-->
-                    <label id="addPostBtn" class="btn btn-primary" for="create-post">Create
-                        Post</label>
-<!-- <button id="addPostBtn">Add Post</button> -->
+                    <!-- <label id="addPostBtn" class="btn btn-primary" for="create-post">Create
+                        Post</label> -->
+<!-- <button id="addPostBtn">Add Post</button>
 
-  <!-- <div id="overlay"></div>
+  <div id="overlay"></div>
   
   <div id="postFormContainer" class="hidden">
     <div id="postFormWrapper">
@@ -222,8 +222,8 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-  </div> -->
-  
+  </div>
+   -->
   <!-- <div id="postContainer" class="post-container"></div> -->
                         
                 </div>
@@ -547,7 +547,11 @@
         });
     });
     </script>
-    
+    <script>
+        function Profile(){
+            location.href= "profile.html"
+        }
+    </script>
 
 
 <script>

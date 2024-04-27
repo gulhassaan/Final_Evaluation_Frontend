@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" type="x-icon" href="./img/apnalogin.png">
+    <link rel="shortcut icon" type="x-icon" href="./img/lock.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"></script>
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <script src="sign.js"></script>
+    <script src="./Js/sign.js"></script>
     <script>
    class User {
     constructor(email, username, password) {
@@ -142,6 +142,7 @@ localStorage.setItem("FirstName", user.firstName);
 localStorage.setItem("UserProfile", user.image);
 localStorage.setItem("BirthDate", user.birthDate);
 localStorage.setItem("Domain", user.domain);
+
 
 Swal.fire({
   title: "Successful Login!",
