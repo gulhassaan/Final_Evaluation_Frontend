@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="shortcut icon" type="x-icon" href="./img/apnainsta.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Social Media App</title>
         <!--CDN for ICONS-->
@@ -9,6 +10,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
         <link rel="stylesheet" href="SocialMedia.css" />
+        <link rel="stylesheet" href="post.css" />
 
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -26,6 +28,8 @@
         <script src="./user.js"></script>
         <script src="./comments.js"></script>
         <script src="auth.js"></script>
+        <script src="post.js"></script>
+        <!-- <script src="search.js"></script> -->
 
     </head>
     <body>
@@ -40,8 +44,12 @@
                     <input type="search" id="search-input" placeholder="Search for anything, which you want to know">
                 </div>
                 
-                <div class="live" onclick="showlivemodal()">
-<button>Live</button>
+                <div class="live" style=" margin-left: 20px;  display: flex; gap: 10px;" onclick="showlivemodal()">
+
+<div><button><i class="fa-solid fa-tv"></i></button></div>
+<div><button>Live</button></div>
+
+
                 </div>
                 <div class="create">
                     <!--Show Loggedin user-->
@@ -194,9 +202,30 @@
                                 style="color: #01F4F7"></i>
                         </a> -->
                     </div>
+
                     <!--Sidebar End-->
-                    <label class="btn btn-primary" for="create-post">Create
+                    <label id="addPostBtn" class="btn btn-primary" for="create-post">Create
                         Post</label>
+<!-- <button id="addPostBtn">Add Post</button> -->
+
+  <!-- <div id="overlay"></div>
+  
+  <div id="postFormContainer" class="hidden">
+    <div id="postFormWrapper">
+      <form id="postForm">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="userId">User ID:</label><br>
+        <input type="number" id="userId" name="userId"><br><br>
+        <label for="des">Description:</label><br>
+        <input type="text" id="des" name="des"><br><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div> -->
+  
+  <!-- <div id="postContainer" class="post-container"></div> -->
+                        
                 </div>
 
                 <!--Middle Section-->
@@ -206,21 +235,22 @@
                             <button id="prevBtn">&lt;</button>
                             <button id="nextBtn">&gt;</button>
                         </div>
-
+           
+                        <div id="stories-list">
                         <ul class="carousel">
                             <li>
                                 <div class="outer-layer">
                                     <a href><img src="./img/Dp.jpg"></a>
                                     <button>+</button>
                                 </div>
-                                <span>Hassaan1</span>
+                                <span style="font-weight: 500;">Hassaan</span>
                             </li>
 
                             <li>
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-1.jpg"></a>
                                 </div>
-                                <span>Hassaan2</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Asad</span>
 
                             </li>
 
@@ -228,7 +258,8 @@
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-2.jpg"></a>
                                 </div>
-                                <span>Hassaan3</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Amir</span>
+
 
                             </li>
 
@@ -236,7 +267,8 @@
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-3.jpg"></a>
                                 </div>
-                                <span>Hassaan4</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Babar</span>
+
 
                             </li>
 
@@ -244,7 +276,8 @@
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-4.jpg"></a>
                                 </div>
-                                <span>Hassaan5</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Imad</span>
+
 
                             </li>
 
@@ -252,7 +285,8 @@
                                 <div class="outer-layer">
                                     <a href><img src="./img/Dp.jpg"></a>
                                 </div>
-                                <span>Hassaan6</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Fakhar</span>
+
 
                             </li>
 
@@ -260,25 +294,28 @@
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-1.jpg"></a>
                                 </div>
-                                <span>Hassaan7</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Salman</span>
+
 
                             </li>
                             <li>
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-1.jpg"></a>
                                 </div>
-                                <span>Hassaan8</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Haris</span>
+
 
                             </li>
                             <li>
                                 <div class="outer-layer">
                                     <a href><img src="./img/dp-1.jpg"></a>
                                 </div>
-                                <span>Hassaan9</span>
+                                <span style="font-weight: 500; align-items: center; display: flex;">Afridi</span>
+
 
                             </li>
                         </ul>
-
+                    </div>
                     </div>
 
                     <!--Bootstrap Card-->
@@ -286,8 +323,8 @@
                     <!--Getting data from API-->
                     <div style="margin-top: 3rem;">
                         <!--Card Div-->
-
                         <div id="post-list"></div>
+                        <div id="postContainer" class="post-container"></div>
                         <!--Card Div End-->
                     </div>
                     <!--post -->
@@ -331,7 +368,7 @@
                         </div></div>
 
                     <div class="All-comment-box"
-                        style="background-color:white; margin-top: -10px; height: 60vh; overflow-y: scroll;">
+                        style="background-color:white; margin-top: -10px; height: 60vh; overflow-y: scroll; padding: 10px 0px;">
                         <div
                             style="display: flex; padding: 5px 10px; gap: 20px; border-radius: 15px; background-color: #F0EFEF; margin: 30px auto; width: 90%; align-items: center;">
                             <div style="flex: 0 0 auto;">

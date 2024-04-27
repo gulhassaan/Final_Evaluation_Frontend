@@ -335,6 +335,13 @@ h2{
 
 .live{
   display: none;
+
+}
+.live i{
+  display: none;
+}
+.live div{
+  display: none;
 }
 .comment-profile-pic {
   width: 50vw;
@@ -414,6 +421,7 @@ h2{
 /*MEDIA QUERIES*/
 
 @media screen and (max-width: 992px) {
+ 
   nav .search-bar{
     display: none;
   }
@@ -498,7 +506,7 @@ display: none;
 
 
  .middle{
- margin-left: -10px;
+ margin-left: -90px;
  }
  #userimage{
   margin-left: 30px;
@@ -515,7 +523,39 @@ display: none;
  .stories::-webkit-scrollbar{
   display: none;
  }
+ .live button{
+  background: transparent;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+
+ }
+ .create{
+  margin-left: -90px;
+ }
  .live{
+  display: flex;
+  margin-right: 100px;
   display: block;
+  background-color:#022F96;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.live i{
+  display: block;
+}
+.live div{
+  display: block;
+}
+main .container .sidebar{
+  background-color: red;
+  display: none;
+}
+main{
+  overflow-x: hidden;
+}
+.All-comment-box{
+  padding: 20px !important;
 }
 }
