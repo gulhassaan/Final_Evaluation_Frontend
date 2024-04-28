@@ -15,14 +15,13 @@
 <body>
 <!-- nav -->
 <nav class="">
-  <div class="flex flex-wrap items-center justify-between md:justify-around">
+  <div class="flex justify-between md:justify-around" style="padding: 20px 0px; background-color: #ECEBEB;">
 
-    <h1 class="font-bold"> Social Media </h1>
+    <h1 class="font-bold" id="user-name2"> </h1>
 
 
     <div class="space-x-4">
-      <a class="inline-block bg-blue-500 px-2 py-1 text-white font-semibold 
-                           text-sm rounded" href="#">Log In</a>
+      <a class=" bg-blue-500 px-3 py-2 text-white font-bold text-sm rounded" href="./SocialMedia.html">Back to Social media</a>
     </div>
   </div>
 </nav>
@@ -58,7 +57,7 @@
                         sm:inline-block block">Follow</a>
         </div>
 
-        <!-- post, following, followers list for medium screens -->
+        <!-- post, following, follower-->
         <ul class="hidden md:flex space-x-8 mb-4">
           <li>
             <span class="font-semibold">6</span>
@@ -74,25 +73,16 @@
             following
           </li>
         </ul>
-
-        <!-- user meta form medium screens -->
         
         <div class="hidden md:block">
           <h1 class="font-semibold" id="user-name1"></h1>
-          <span class="bioclass">Internet company</span>
-          <p>Slashdot is a web development and coding blog website. Where we provide professional web projects🌍</p>
+          <p>Programmers Force , headquartered in the United Kingdom, has been established with an aim to facilitate your business needs with innovative and intelligent solutions.🌍</p>
           <span ><strong id="company"></strong></span>
         </div>
 
       </div>
 
-      <!-- user meta form small screens -->
-      <div class="md:hidden text-sm my-2">
-        <h1 class="font-semibold">Hassaan</h1>
-          <span class="bioclass">Programmers Force</span>
-          <p>Hassaan is a web development and coding blog website. Where we provide professional web projects🌍</p>
-          <span><strong>www.Hassaan.com</strong></span>
-      </div>
+    
 
     </header>
 
@@ -187,6 +177,10 @@
     let username1 = localStorage.getItem("FirstName");
     let nameBox1 = document.getElementById("user-name1");
     nameBox1.innerText = username1;
+
+    let username2 = localStorage.getItem("FirstName");
+    let nameBox2 = document.getElementById("user-name2");
+    nameBox2.innerText = username2 + "'s  Profile ";
 
 
     let company = localStorage.getItem("Domain");
