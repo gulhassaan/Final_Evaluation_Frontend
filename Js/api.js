@@ -1,24 +1,21 @@
-fetch('https://dummyjson.com/posts')
-  .then(response => response.json())
-  .then(postData => {
+fetch("https://dummyjson.com/posts")
+  .then((response) => response.json())
+  .then((postData) => {
     let posts = postData.posts.slice(0, 10); // Take only the first ten posts initially
 
-    fetch('https://dummyjson.com/users')
-      .then(response => response.json())
-      .then(userData => {
+    fetch("https://dummyjson.com/users")
+      .then((response) => response.json())
+      .then((userData) => {
         const users = userData.users;
 
-        const postList = document.getElementById('post-list');
+        const postList = document.getElementById("post-list");
 
         function renderPosts(posts) {
           posts.forEach((post, index) => {
-
             // Get the user index for the current post
             const userIndex = index % users.length;
             const user = users[userIndex];
 
-
-            
             const cardHtml = `
           <div style="margin-top: 3rem;">
             <div class="card"
@@ -27,7 +24,9 @@ fetch('https://dummyjson.com/posts')
               <div style="border-radius: 20px; overflow: hidden;">
                   <img class="card-img-top"
                     style="padding: 10px; height: 100%; width: 100%; aspect-ratio: 1/1; border-radius: 20px;"
-                    src="${post.imageUrl ? post.imageUrl : './img/post2.png'}" alt="Post Image">
+                    src="${
+                      post.imageUrl ? post.imageUrl : "./img/post2.png"
+                    }" alt="Post Image">
                 </div>
                 <div class="card-parent">
                   <div id="newcard" class="div card-step-1" style="display: flex;  padding: 10px; gap: 1rem;">
@@ -44,14 +43,16 @@ fetch('https://dummyjson.com/posts')
                       </div>
                       <div class="div heading-para">
                         <h5 class="card-title" style="color: #B8B8BF; font-weight: bold; margin-top: 1rem;">
-                        <span style="color: black; font-weight: bold;">Genre: </span> #${post.tags}
+                        <span style="color: black; font-weight: bold;">Genre: </span> #${
+                          post.tags
+                        }
                         </h5>
                       </div>
                     </div>
                   </div>
                   <div id="contentContainer" style="max-height: 7vh; overflow: hidden;">
                     <p id="content" style="color: #CFCFD4; font-weight: 400; margin:0px 10px; font-size:0.7rem">
-                      ${post.body ? post.body : 'No description provided.'}
+                      ${post.body ? post.body : "No description provided."}
                     </p>
                   </div>
                   <button id="showMoreBtn" style="background-color:white; margin-right:10px; float:right; color:black;" onclick="showMore()">Show More</button>
@@ -68,11 +69,15 @@ fetch('https://dummyjson.com/posts')
                     <div
                       style="display: flex; flex-direction: column;">
                       <div id="firstname"><p
-                          style="font-weight: bolder; font-size:15px;">${user.firstName}</p></div>
+                          style="font-weight: bolder; font-size:15px;">${
+                            user.firstName
+                          }</p></div>
                       <div style="display: flex;">
                         <div id="companyName">
                           <p
-                            style="color: #B8B8BF; font-size:12px;">${user.company.title} <span
+                            style="color: #B8B8BF; font-size:12px;">${
+                              user.company.title
+                            } <span
                               style="color: #CFCFD4;">at</span></p>
                         </div>
                         
@@ -125,17 +130,24 @@ fetch('https://dummyjson.com/posts')
 
 
 
-<div style="display:flex; background-color: #AAE1FC; border-radius: 0px 0px 15px 15px">
+              <div style="display:flex; background-color: #AAE1FC; border-radius: 0px 0px 15px 15px">
               <div style="position: relative; display: inline-block; margin-left:10px; ">
-              <input id="comment-input-${post.id}" class="comment-input" placeholder="😊 Add Comment..." required style="padding: 10px; border: 1px solid #F0EFEF; margin-bottom:0px; border-radius: 5px; width:125%; background-color: #AAE1FC"/>
-              <button class="add-comment-btn" onclick="postComment(${post.id})" style="position: absolute; right: 0; left:14rem; top: 50%; transform: translateY(-50%); padding: 8px 15px; background-color: transparent; color: #022F96; border: none; border-radius: 5px; cursor: pointer;">
-              <i class="fas fa-paper-plane "></i></button>
-          </div>
-          <div id="appendComment-${post.id}" style="margin-top: 0px; margin-left: 60px; display: flex; flex-direction: row;  padding: 10px; border-radius: 5px;">
-          <!-- New comments will be appended here -->
-      </div>
-      
+                  <input id="comment-input-${
+                    post.id
+                  }" class="comment-input" placeholder="😊 Add Comment..." required style="padding: 10px; border: 1px solid #F0EFEF; margin-bottom:0px; border-radius: 5px; width:125%; background-color: #AAE1FC"/>
+                  <button class="add-comment-btn" onclick="postComment(${
+                    post.id
+                  })" style="position: absolute; right: 0; left:14rem; top: 50%; transform: translateY(-50%); padding: 8px 15px; background-color: transparent; color: #022F96; border: none; border-radius: 5px; cursor: pointer;">
+                      <i class="fas fa-paper-plane "></i>
+                  </button>
               </div>
+              <div id="appendComment-${
+                post.id
+              }" style="margin-top: 0px; margin-left: 60px; display: flex; flex-direction: column;  padding: 10px; border-radius: 5px;">
+                  <!-- New comments will be appended here -->
+              </div>
+          </div>
+          
           
           
 
@@ -173,47 +185,47 @@ fetch('https://dummyjson.com/posts')
         }
 
         function loadMorePosts() {
-          const nextPosts = postData.posts.slice(posts.length, posts.length + 10);
+          const nextPosts = postData.posts.slice(
+            posts.length,
+            posts.length + 10
+          );
           if (nextPosts.length > 0) {
             posts = [...posts, ...nextPosts];
             renderPosts(nextPosts);
             addShowMoreButton(); // Add the "Show More" button after loading more posts
           } else {
-            showMoreBtn.style.display = 'none'; // Hide the button if there are no more posts
+            showMoreBtn.style.display = "none"; // Hide the button if there are no more posts
           }
         }
 
         renderPosts(posts);
 
-        const showMoreBtn = document.createElement('button');
+        const showMoreBtn = document.createElement("button");
 
-        showMoreBtn.addEventListener('click', loadMorePosts);
+        showMoreBtn.addEventListener("click", loadMorePosts);
 
         postList.appendChild(showMoreBtn);
 
         function addShowMoreButton() {
-          const moreButtonContainer = document.createElement('div');
-          moreButtonContainer.classList.add('more-button-container');
-          moreButtonContainer.style.marginTop = '20px'; // Adjust margin as needed
+          const moreButtonContainer = document.createElement("div");
+          moreButtonContainer.classList.add("more-button-container");
+          moreButtonContainer.style.marginTop = "20px"; // Adjust margin as needed
 
-
-
-          const moreButton = document.createElement('button');
-          moreButton.textContent = 'Show More';
-          moreButton.classList.add('show-more-button');
-          moreButton.style.color = 'black';
-          moreButton.style.backgroundColor = '#F0EFEF';
+          const moreButton = document.createElement("button");
+          moreButton.textContent = "Show More";
+          moreButton.classList.add("show-more-button");
+          moreButton.style.color = "black";
+          moreButton.style.backgroundColor = "#F0EFEF";
           moreButton.style.padding = "10px 200px";
-          moreButton.style.borderRadius = '20px'; 
-          moreButton.style.border = '1px solid black'; 
-          moreButton.style.cursor = 'pointer'; 
-          moreButton.style.marginLeft = 'auto'; 
-          moreButton.style.marginRight = 'auto'; 
-          moreButton.style.display = 'block'; 
-          moreButton.style.marginBottom = '20px'
-          
+          moreButton.style.borderRadius = "20px";
+          moreButton.style.border = "1px solid black";
+          moreButton.style.cursor = "pointer";
+          moreButton.style.marginLeft = "auto";
+          moreButton.style.marginRight = "auto";
+          moreButton.style.display = "block";
+          moreButton.style.marginBottom = "20px";
 
-          moreButton.addEventListener('click', loadMorePosts);
+          moreButton.addEventListener("click", loadMorePosts);
           document.body.appendChild(moreButtonContainer);
           moreButtonContainer.appendChild(showMoreBtn);
           moreButtonContainer.appendChild(moreButton);
@@ -222,18 +234,16 @@ fetch('https://dummyjson.com/posts')
 
         addShowMoreButton();
       })
-      .catch(error => console.error('Error fetching users:', error));
+      .catch((error) => console.error("Error fetching users:", error));
   })
-  .catch(error => console.error('Error fetching posts:', error));
-
-
+  .catch((error) => console.error("Error fetching posts:", error));
 
 // Fetching only user Data
-fetch('https://dummyjson.com/users')
-  .then(response => response.json())
-  .then(userData => {
+fetch("https://dummyjson.com/users")
+  .then((response) => response.json())
+  .then((userData) => {
     const users = userData.users;
-    const userList = document.getElementById('user-list');
+    const userList = document.getElementById("user-list");
 
     users.forEach((user, index) => {
       const userHtml = `
@@ -244,115 +254,183 @@ fetch('https://dummyjson.com/users')
           <div class="handle">
             <h2>${user.firstName}</h2>
           </div>
-          ${index % 2 === 0 ? '<i class="fa-solid fa-circle" style="color: #01F4F7"></i>' : '<h6 style="font-size:0.7rem;  color: rgb(171, 171, 171);">Active 5 min ago </h6>'}
+          ${
+            index % 2 === 0
+              ? '<i class="fa-solid fa-circle" style="color: #01F4F7"></i>'
+              : '<h6 style="font-size:0.7rem;  color: rgb(171, 171, 171);">Active 5 min ago </h6>'
+          }
         </div>
       `;
       userList.innerHTML += userHtml;
     });
-    
-    
   })
-  .catch(error => console.error('Error fetching user data:', error));
+  .catch((error) => console.error("Error fetching user data:", error));
 
+function showMore() {
+  var contentContainer = document.getElementById("contentContainer");
+  var content = document.getElementById("content");
+  var btn = document.getElementById("showMoreBtn");
 
-    function showMore() {
-        var contentContainer = document.getElementById('contentContainer');
-        var content = document.getElementById('content');
-        var btn = document.getElementById('showMoreBtn');
+  if (contentContainer.style.maxHeight !== "none") {
+    contentContainer.style.maxHeight = "none";
+    content.style.overflow = "visible";
+    btn.innerText = "Show Less";
+  } else {
+    contentContainer.style.maxHeight = "10vh";
+    content.style.overflow = "hidden";
+    btn.innerText = "Show More";
+  }
+}
 
-        if (contentContainer.style.maxHeight !== 'none') {
-            contentContainer.style.maxHeight = 'none';
-            content.style.overflow = 'visible';
-            btn.innerText = 'Show Less';
-        } else {
-            contentContainer.style.maxHeight = '10vh';
-            content.style.overflow = 'hidden';
-            btn.innerText = 'Show More';
-        }
-    }
+// Function to perform Comments in Posts
 
+function postComment(postId) {
+  // Get the comment text from the input field
+  let commentInput = document.getElementById(`comment-input-${postId}`);
+  let commentText = commentInput.value.trim(); // Trim whitespace
 
-    
+  // Check if the comment is not empty
+  if (commentText === "") {
+    // Use Swal alert for better user experience
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Please enter a comment , Its empty!",
+    });
+    return; // Exit the function if comment is empty
+  }
 
+  // Fetch data from API (dummy endpoint used for example)
+  fetch("https://dummyjson.com/comments/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      body: commentText,
+      postId: postId, // Using the passed postId parameter
+      userId: 5,
+    }),
+  })
+    .then((res) => res.json())
+    .then((addCustomeCommet) => {
+      // Create a new comment element
+      let commentContainer = document.getElementById(`appendComment-${postId}`);
+      let newComment = document.createElement("div");
+      newComment.style.paddingLeft = "10px"; // Indentation for the numbering
 
-    // Function to perform Comments in Posts
-    function editComment(commentId, postId, commentBody) {
-      console.log("Post ID:", postId);
-      fetch(`https://dummyjson.com/posts/${postId}`)
+      // Dynamically generate comment numbering
+      let commentNumber = commentContainer.children.length + 1;
+
+      // Set the content of the new comment element
+      // Inside the postComment function
+      newComment.innerHTML = `
+<span>${commentNumber} : ${commentText}</span>
+<button class="edit-comment-btn" style="mix-blend-mode: multiply;" onclick="editComment(${addCustomeCommet.id}, '${commentText}')"><i class="fa-regular fa-pen-to-square"></i></button>
+<button class="delete-comment-btn" style="mix-blend-mode: multiply;" onclick="deleteComment(${addCustomeCommet.id}, ${postId})"><i class="fa-regular fa-trash-can"></i></button>
+`;
+
+      // Append the new comment element to the comment container
+      commentContainer.appendChild(newComment);
+
+      // Clear the comment input field after successful posting
+      commentInput.value = "";
+
+      // Show success message using Swal
+      Swal.fire({
+        icon: "success",
+        title: "Comment added successfully!",
+        text: `Comment: "${commentText}"`,
+      });
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+function editComment(commentId, currentText) {
+  // Use Swal input to allow editing the comment
+  Swal.fire({
+    title: "Edit Comment",
+    input: "text",
+    inputValue: currentText,
+    showCancelButton: true,
+    confirmButtonText: "Save",
+    cancelButtonText: "Cancel",
+    inputValidator: (value) => {
+      if (!value.trim()) {
+        return "Please enter a non-empty comment!";
+      }
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Fetch data from API to update the comment
+      fetch(`https://dummyjson.com/comments/${commentId}`, {
+        method: "PUT", //
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          body: result.value,
+        }),
+      })
         .then((res) => res.json())
-        .then((getPost) => {
-          const post = getPost; // Assuming getPost contains the post data
-          console.log("Post Data:", post);
-    
-          fetch(`https://dummyjson.com/comments/${commentId}`, {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              body: commentBody,
-            }),
-          })
-            .then((res) => res.json())
-            .then((updatedComment) => {
-              console.log("Updated Comment:", updatedComment);
-    
-              // Dynamically construct the ID of the comment input box based on the post ID
-              const comment_Box = document.getElementById(
-                `comment-input-${postId}`
-              );
-              console.log("Comment Input Box:", comment_Box);
-    
-              if (comment_Box) {
-                comment_Box.value = updatedComment.body;
-              } else {
-                console.error(
-                  `Element with ID 'comment-input-${postId}' not found.`
-                );
-              }
-            })
-            .catch((error) => {
-              console.error("Error updating comment:", error);
-            });
+        .then((updatedComment) => {
+          // Update the displayed comment with the new body
+          let commentElement = document.querySelector(
+            `#appendComment-${updatedComment.postId} div[data-comment-id="${updatedComment.id}"]`
+          );
+          if (commentElement) {
+            commentElement.querySelector("span").textContent =
+              updatedComment.body;
+          }
+          Swal.fire({
+            icon: "success",
+            title: "Comment updated successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log("Api hitted and comments edit....");
         })
         .catch((error) => {
-          console.error("Error fetching post data:", error);
+          console.error("Error:", error);
         });
     }
-  
-  
-  
-    function postComment(postId) {
-      // Fetch data from API (dummy endpoint used for example)
-      fetch("https://dummyjson.com/comments/add", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-              body: "This makes all sense to me!",
-              postId: postId, // Using the passed postId parameter
-              userId: 5,
-          }),
-      })
-      .then((res) => res.json())
-      .then((addCustomeCommet) => {
-          // Get the comment text from the input field
-          let commentText = document.getElementById(`comment-input-${postId}`).value;
-          
-          // Create a new comment element
-          let commentContainer = document.getElementById(`appendComment-${postId}`);
-          let newComment = document.createElement("div");
-          newComment.style.paddingLeft = "10px"; // Indentation for the numbering
-          
-          // Dynamically generate comment numbering
-          let commentNumber = commentContainer.children.length + 1;
-          
-          // Set the content of the new comment element
-          newComment.textContent = `${commentNumber} : ${commentText}`;
-          
-          // Append the new comment element to the comment container
-          commentContainer.appendChild(newComment);
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      });
-  }
-  
+  });
+}
 
+function deleteComment(commentId, postId) {
+  // Confirm with the user before deleting the comment
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Fetch data from API to delete the comment
+      fetch(`https://dummyjson.com/comments/${commentId}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((deletedComment) => {
+          // Remove the deleted comment element from the UI
+          let commentElement = document.querySelector(
+            `#appendComment-${postId} div[data-comment-id="${deletedComment.id}"]`
+          );
+          if (commentElement) {
+            commentElement.remove();
+          }
+          Swal.fire({
+            icon: "success",
+            title: "Comment deleted successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log("Api hitted and comments deleted....");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  });
+}
