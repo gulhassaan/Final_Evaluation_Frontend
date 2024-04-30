@@ -138,24 +138,24 @@
 
                     // Store user data in localStorage
                     localStorage.setItem("Username", user.username);
-localStorage.setItem("FirstName", user.firstName);
-localStorage.setItem("UserProfile", user.image);
-localStorage.setItem("BirthDate", user.birthDate);
-localStorage.setItem("Domain", user.domain);
-localStorage.setItem("UserID", user.id);
-
-Swal.fire({
-  title: "Successful Login!",
-  icon: "success",
-  showCancelButton: false,
-  confirmButtonColor: "#3085d6",
-  confirmButtonText: "OK"
-}).then((result) => {
-    if (result.isConfirmed) {
-        // Redirect to social media page
-        window.location.href = "socialmedia.html";
-    }
-});
+                    localStorage.setItem("FirstName", user.firstName);
+                    localStorage.setItem("UserProfile", user.image);
+                    localStorage.setItem("Domain", user.domain);
+                    localStorage.setItem("BirthDate", user.birthDate);
+                    
+                    localStorage.setItem("UserID", user.id);
+                    title: "Successful Login!",
+                    Swal.fire({
+                       icon: "success",
+                       showCancelButton: false,
+                       confirmButtonColor: "#3085d6",
+                       confirmButtonText: "OK"
+                     }).then((result) => {
+                         if (result.isConfirmed) {
+                              // Redirect to social media page
+                                window.location.href = "socialmedia.html";
+                  }
+                });
 
 
 
