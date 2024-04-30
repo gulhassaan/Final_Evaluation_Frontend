@@ -3,7 +3,7 @@ window.onload = function() {
     console.log("Token : " , token)
     if (!token) {
         // Token is not present, redirect to index.html
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
     } else {
         // Make a request to get the current authenticated user
         fetch('https://dummyjson.com/auth/me', {
@@ -15,7 +15,8 @@ window.onload = function() {
         .then(response => {
             if (!response.ok) {
                 // If the request fails, redirect to index.html
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
+
             } else {
                 // If the request is successful, stay on socialmedia.html
                 console.log('User is authenticated');
@@ -24,7 +25,8 @@ window.onload = function() {
         .catch(error => {
             console.error('Error fetching current user:', error);
             // If there's an error, redirect to index.html
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
+
         });
     }
 };
