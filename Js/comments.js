@@ -1,11 +1,11 @@
 class CommentManager {
     constructor() {
         this.profilePics = [
-            './img/Dp.jpg',
-            './img/dp-1.jpg',
-            './img/dp-2.jpg',
-            './img/dp-3.jpg',
-            './img/official.jpg'
+            '/img/Dp.jpg',
+            '/img/dp-1.jpg',
+            '/img/dp-2.jpg',
+            '/img/dp-3.jpg',
+            '/img/official.jpg'
         ];
         this.commentsContainer = document.getElementById('comments-container');
         this.commentInput = document.getElementById('comment-text');

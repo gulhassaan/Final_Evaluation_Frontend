@@ -25,7 +25,7 @@ fetch("https://dummyjson.com/posts")
                   <img class="card-img-top"
                     style="padding: 10px; height: 100%; width: 100%; aspect-ratio: 1/1; border-radius: 20px;"
                     src="${
-                      post.imageUrl ? post.imageUrl : "./img/post2.png"
+                      post.imageUrl ? post.imageUrl : "/img/post2.png"
                     }" alt="Post Image">
                 </div>
                 <div class="card-parent">
@@ -83,7 +83,7 @@ fetch("https://dummyjson.com/posts")
                         
                         <div id="paypal-img">
                           <img style="height: 17px;"
-                            src="./img/paypal.png" />
+                            src="/img/paypal.png" />
                         </div>
                       </div>
                     </div>
