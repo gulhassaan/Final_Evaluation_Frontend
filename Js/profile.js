@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="card" style="border-radius:20px; width: 100%; height:fit-content; background-color: white; box-shadow: 0 0 10px 0 rgb(220, 220, 220); gap: 20px; margin: 0 auto;">
                         <div class="card-data" style="display: grid; grid-template-columns: 40% 60%;">
                             <div style="border-radius: 20px; overflow: hidden;">
-                                <img class="card-img-top" style="padding: 10px; height: 100%; width: 100%; aspect-ratio: 1/1; border-radius: 20px;" src="${post.imageUrl ? post.imageUrl : "/img/post2.png"}" alt="Post Image">
+                                <img class="card-img-top" style="padding: 10px; height: 100%; width: 100%; aspect-ratio: 1/1; border-radius: 20px;" src="${post.imageUrl ? post.imageUrl : "../img/post2.png"}" alt="Post Image">
                             </div>
                             <div class="card-parent">
                                 <div id="newcard" class="div card-step-1" style="display: flex; padding: 10px; gap: 1rem;">
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 <p style="color: #B8B8BF; font-size:12px;">${loggedInUser.company.title} <span style="color: #CFCFD4;">at</span></p>
                                             </div>
                                             <div id="paypal-img">
-                                                <img style="height: 17px;" src="/img/paypal.png" />
+                                                <img style="height: 17px;" src="../img/paypal.png" />
                                             </div>
                                         </div>
                                     </div>
