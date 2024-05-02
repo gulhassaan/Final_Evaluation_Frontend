@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const postContainer = document.getElementById("postContainer");
-  
+    
     // Simulated logged-in user ID
     const UserID =  localStorage.getItem("UserID");
     const loggedInUserId = parseInt(UserID); // Change this to the actual logged-in user ID

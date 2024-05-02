@@ -131,19 +131,13 @@ fetch("https://dummyjson.com/posts")
 
 
               <div style="display:flex; background-color: #AAE1FC; border-radius: 0px 0px 15px 15px">
-              <div style="position: relative; display: inline-block; margin-left:10px; ">
-                  <input id="comment-input-${
-                    post.id
-                  }" class="comment-input" placeholder="😊 Add Comment..." required style="padding: 10px; border: 1px solid #F0EFEF; margin-bottom:0px; border-radius: 5px; width:125%; background-color: #AAE1FC"/>
-                  <button class="add-comment-btn" onclick="postComment(${
-                    post.id
-                  })" style="position: absolute; right: 0; left:14rem; top: 50%; transform: translateY(-50%); padding: 8px 15px; background-color: transparent; color: #022F96; border: none; border-radius: 5px; cursor: pointer;">
+              <div style=" display:flex; justify-content:space-between; align-item:center; margin-left:10px; ">
+                  <input id="comment-input-${post.id}" class="comment-input" placeholder="😊 Add Comment..." required style="padding: 10px; border: 1px solid #F0EFEF; margin-bottom:0px; border-radius: 5px; width:125%; background-color: #AAE1FC"/>
+                  <button class="add-comment-btn" onclick="postComment(${post.id })" style="padding: 8px 15px; background-color: transparent; color: #022F96; border: none; border-radius: 5px; cursor: pointer;">
                       <i class="fas fa-paper-plane "></i>
                   </button>
               </div>
-              <div id="appendComment-${
-                post.id
-              }" style="margin-top: 0px; margin-left: 60px; display: flex; flex-direction: column;  padding: 10px; border-radius: 5px;">
+              <div id="appendComment-${post.id}" style="margin-top: 0px; margin-left: 60px; display: flex; flex-direction: column;  padding: 10px; border-radius: 5px;">
                   <!-- New comments will be appended here -->
               </div>
           </div>
@@ -300,6 +294,10 @@ function postComment(postId) {
     return; // Exit the function if comment is empty
   }
 
+  // Get user data from local storage
+  const userProfile = localStorage.getItem("UserProfile");
+  const userFirstName = localStorage.getItem("FirstName");
+
   // Fetch data from API (dummy endpoint used for example)
   fetch("https://dummyjson.com/comments/add", {
     method: "POST",
@@ -312,24 +310,45 @@ function postComment(postId) {
   })
     .then((res) => res.json())
     .then((addCustomeCommet) => {
+      // Create a new comment element container with flex properties
+      let newCommentContainer = document.createElement("div");
+      newCommentContainer.style.display = "flex";
+      newCommentContainer.style.alignItems = "center";
+      newCommentContainer.style.marginBottom = "10px"; 
+
       // Create a new comment element
       let commentContainer = document.getElementById(`appendComment-${postId}`);
       let newComment = document.createElement("div");
-      newComment.style.paddingLeft = "10px"; // Indentation for the numbering
+      newComment.style.paddingLeft = "10px"; 
+      newCommentContainer.style.display = "flex";
+
+      newComment.style.flexGrow = "1";
 
       // Dynamically generate comment numbering
       let commentNumber = commentContainer.children.length + 1;
 
       // Set the content of the new comment element
-      // Inside the postComment function
       newComment.innerHTML = `
-<span>${commentNumber} : ${commentText}</span>
-<button class="edit-comment-btn" style="mix-blend-mode: multiply;" onclick="editComment(${addCustomeCommet.id}, '${commentText}')"><i class="fa-regular fa-pen-to-square"></i></button>
-<button class="delete-comment-btn" style="mix-blend-mode: multiply;" onclick="deleteComment(${addCustomeCommet.id}, ${postId})"><i class="fa-regular fa-trash-can"></i></button>
-`;
+      <div style="display: flex; justify-content:center; align-items: center; margin-bottom: 10px;">
+      <div style="padding-left: 10px; display: flex; ">
+        <img src="${userProfile}" alt="Profile Image" style="width: 20px; height: 20px; border-radius: 50%; margin-right: 10px;">
+        <span>${userFirstName} - ${commentNumber} : ${commentText}</span>
+      </div>
+      <div style="display: inline-block;">
+      <button class="edit-comment-btn" style="mix-blend-mode: multiply;" onclick="editComment(${addCustomeCommet.id}, '${commentText}')"><i class="fa-regular fa-pen-to-square"></i></button>
+      <button class="delete-comment-btn" style="mix-blend-mode: multiply;" onclick="deleteComment(${addCustomeCommet.id}, ${postId})"><i class="fa-regular fa-trash-can"></i></button>
+      </div>
+    </div>
+    
+    `;
+    
+    
 
       // Append the new comment element to the comment container
-      commentContainer.appendChild(newComment);
+      newCommentContainer.appendChild(newComment);
+      
+      // Append the new comment container to the comment container
+      commentContainer.appendChild(newCommentContainer);
 
       // Clear the comment input field after successful posting
       commentInput.value = "";
